@@ -1,13 +1,7 @@
-<script setup>
-import HomePage from './views/HomePage.vue'
-</script>
 
 <template>
-  <header>
-  </header>
-
   <main>
-    <home-page />
+    <router-view />
   </main>
 </template>
 
@@ -19,5 +13,4 @@ main {
   height: 100vh;
   width: 100vw;
 }
-
 </style>

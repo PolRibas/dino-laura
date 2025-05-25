@@ -3,6 +3,13 @@ import { ref } from 'vue'
 import {onMounted} from 'vue'
 import { useDinoStatesStore } from '../stores/dino'
 
+const props = defineProps({
+    customClass: {
+        type: String,
+        default: ''
+    }
+})
+
 const dinoStatesStore = useDinoStatesStore()
 const states = dinoStatesStore.getStates
 const dinoLaura = ref({
@@ -51,14 +58,25 @@ onMounted(() => {
 </script>
 
 <template>
-    <img class="dino-image" :src="`src/assets/png/${dinoStatesStore.state} (${dinoLaura.image}).png`" alt="Dino Laura" />
+    <img :class="customClass" :src="`src/assets/dino/${dinoStatesStore.state} (${dinoLaura.image}).png`" alt="Dino Laura" />
+    
 </template>
 
 
 <style scoped>
-.dino-image {
+img {
   max-width: 300px; /* Ajusta el tamaño máximo para que no se haga enorme */
   width: 100%;
   height: auto;
+}
+.homePage {
+  max-width: 00px; /* Ajusta el tamaño máximo para que no se haga enorme */
+  width: 100%;
+  height: 100%;
+  max-height: 200px; /* Limita la altura máxima */
+  object-fit: contain; /* Mantiene la proporción de la imagen */
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+  display: block; /* Asegura que el margin auto funcione */
+  transition: transform 0.3s ease; /* Transición suave al escalar */
 }
 </style>
